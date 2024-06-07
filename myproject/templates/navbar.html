@@ -10,6 +10,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url "logout" %}">Logout</a></li>
                 {% else %}
                 <li class="nav-item"><a class="nav-link" href="{% url "login" %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url "register" %}">Register</a></li>
                 {% endif %}
                 
 
@@ -25,6 +26,13 @@
                     </ul>
                 </li>
             </ul>
+            {% if user.is_authenticated %}
+            <div>
+                Hello
+                {{user.username}}
+            </div>
+            {% endif %}
+            &nbsp;&nbsp;
             <form class="d-flex">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
