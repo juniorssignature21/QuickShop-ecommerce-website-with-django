@@ -21,6 +21,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     password = models.CharField(max_length=50)
+    user_img = models.ImageField(default='', upload_to='uploads/product/')
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
@@ -31,6 +32,11 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.CharField(max_length=250, default='', blank=True, null=True)
     image = models.ImageField(upload_to='uploads/product/')
+    # image_sample1 = models.ImageField(default='', upload_to='uploads/product')
+    # image_sample2 = models.ImageField(default='', upload_to='uploads/product')
+    # image_sample3 = models.ImageField(default='', upload_to='uploads/product')
+    # image_sample4 = models.ImageField(default='', upload_to='uploads/product')
+    
 
     # Add sale stuff
     is_sale = models.BooleanField(default=False)
@@ -38,6 +44,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
     
 # customer orders
 class Order(models.Model):
