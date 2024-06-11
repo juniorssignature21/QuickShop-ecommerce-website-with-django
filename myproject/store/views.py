@@ -9,6 +9,11 @@ from .forms import SignUpForm
 # Create your views here.
 
 
+def category_summary(request):
+        categories = Category.objects.all()
+        return render(request, 'store/category_summary.html', {'categories': categories})
+
+
 def category(request, foo):
     # replace hyphens with spaces
     foo = foo.replace('-', '')
@@ -21,6 +26,9 @@ def category(request, foo):
     except:
         messages.success(request, ("That category does not exist!!!"))
         return redirect('home')
+    
+
+
     
 
 def product(request, pk):
